@@ -2,6 +2,12 @@
 
 Uma aplicação simples e eficiente para gerenciar jogos em idle na Steam, permitindo ganhar horas de jogo automaticamente.
 
+## 📥 Download
+
+**[⬇️ Baixar BDK Steam Hour Farm v1.0.0](https://github.com/arthurqui/BDK-Steam-Hour-Farm/raw/main/Release/BDK_Steam_Hour_Farm_v1.0.0.zip)** (935 KB)
+
+*Requisitos: Windows 10/11, .NET Framework 4.8, Steam instalada*
+
 ## Funcionalidades
 
 - **Interface amigável** com ícone personalizado
