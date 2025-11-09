@@ -1,4 +1,5 @@
 ﻿﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Steamworks;
 
@@ -9,17 +10,39 @@ namespace steam_idle
         [STAThread]
         static void Main(string[] args)
         {
-            long appId = long.Parse(args[0]);
-            Environment.SetEnvironmentVariable("SteamAppId", appId.ToString());
-
-            if (!SteamAPI.Init())
+            try
             {
-                return;
-            }
+                long appId = long.Parse(args[0]);
+                Environment.SetEnvironmentVariable("SteamAppId", appId.ToString());
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormSteamIdle(appId));
+                if (!SteamAPI.Init())
+                {
+                    // Log erro se possível
+                    try
+                    {
+                        File.AppendAllText("steam-idle-error.log", 
+                            $"{DateTime.Now} - SteamAPI.Init() falhou para AppID {appId}\n");
+                    }
+                    catch { }
+                    return;
+                }
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                
+                var form = new FormSteamIdle(appId);
+                Application.Run(form);
+            }
+            catch (Exception ex)
+            {
+                // Log exceção se possível
+                try
+                {
+                    File.AppendAllText("steam-idle-error.log", 
+                        $"{DateTime.Now} - Exceção: {ex.ToString()}\n");
+                }
+                catch { }
+            }
         }
     }
 }
