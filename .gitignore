@@ -1,8 +1,10 @@
 # Arquivos compilados e temporários
 **/bin/
 **/obj/
-**/Release/
 **/Debug/
+
+# Exceto arquivos ZIP de release
+!Release/*.zip
 
 # Logs
 *.log
