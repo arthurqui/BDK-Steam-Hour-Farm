@@ -48,6 +48,9 @@ namespace SteamIdleManager
                 Logger.LogWarning($"Erro ao carregar ícone: {ex.Message}");
             }
 
+            // Carregar game IDs salvos
+            LoadSavedGameIds();
+
             Logger.LogInfo("BDK Steam Hour Farm iniciado");
             Logger.LogInfo($"Diretório do executável: {Path.GetDirectoryName(Application.ExecutablePath)}");
             Logger.LogInfo($"Diretório atual: {Directory.GetCurrentDirectory()}");
@@ -113,6 +116,9 @@ namespace SteamIdleManager
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
+            // Salvar game IDs automaticamente quando iniciar
+            SaveGameIds();
+
             string input = txtGameIds.Text.Trim();
             
             if (string.IsNullOrWhiteSpace(input))
@@ -555,8 +561,42 @@ namespace SteamIdleManager
             return "";
         }
 
+        private void LoadSavedGameIds()
+        {
+            try
+            {
+                string savedIds = Properties.Settings.Default.LastGameIds;
+                if (!string.IsNullOrEmpty(savedIds))
+                {
+                    txtGameIds.Text = savedIds;
+                    Logger.LogInfo("Game IDs salvos carregados com sucesso");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("Erro ao carregar game IDs salvos", ex);
+            }
+        }
+
+        private void SaveGameIds()
+        {
+            try
+            {
+                Properties.Settings.Default.LastGameIds = txtGameIds.Text.Trim();
+                Properties.Settings.Default.Save();
+                Logger.LogDebug("Game IDs salvos no disco");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("Erro ao salvar game IDs", ex);
+            }
+        }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            // Salvar game IDs antes de fechar
+            SaveGameIds();
+
             if (runningProcesses.Any(p => !p.Process.HasExited))
             {
                 DialogResult result = MessageBox.Show(
