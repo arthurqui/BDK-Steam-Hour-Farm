@@ -4,9 +4,17 @@ Uma aplicação simples e eficiente para gerenciar jogos em idle na Steam, permi
 
 ## 📥 Download
 
-**[⬇️ Baixar BDK Steam Hour Farm v1.1.0](https://github.com/arthurqui/BDK-Steam-Hour-Farm/raw/main/Release/BDK_Steam_Hour_Farm_v1.1.0.zip)** (935 KB)
+### **🚀 Versão Mais Recente: v1.1.0**
+**[⬇️ Baixar BDK Steam Hour Farm v1.1.0](https://github.com/arthurqui/BDK-Steam-Hour-Farm/raw/main/Release/Release1.1.zip)** (935 KB)
+
+**✨ Novidades v1.1.0:**
+- 💾 **Persistência de códigos**: Os códigos dos jogos digitados são salvos automaticamente e carregados ao abrir o programa
+- 🔄 **Experiência aprimorada**: Não precisa redigitar os códigos toda vez que abre o aplicativo
 
 *Requisitos: Windows 10/11, .NET Framework 4.8, Steam instalada*
+
+### **📦 Versões Anteriores**
+- **[⬇️ Baixar BDK Steam Hour Farm v1.0.0](https://github.com/arthurqui/BDK-Steam-Hour-Farm/raw/main/Release/BDK_Steam_Hour_Farm_v1.0.0.zip)** (935 KB)
 
 ## Funcionalidades
 
