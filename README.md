@@ -2,6 +2,11 @@
 
 Uma aplicação simples e eficiente para gerenciar jogos em idle na Steam, permitindo ganhar horas de jogo automaticamente.
 
+
+
+
+
+
 ## 📥 Download
 
 ### **🚀 Versão Mais Recente: v1.1.0**
